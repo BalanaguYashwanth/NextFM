@@ -4,13 +4,6 @@ import {fb} from '../authentication/authenticate'
 import {useHistory} from 'react-router-dom'
 
 const useStyles=makeStyles({
-    middle:{
-        justifyContent: 'center',
-        textAlign:'center',
-        margin: 'auto',
-        paddingTop: '20%',  
-    },
-
     background:{
         height:'100%',
         width:'100%',
@@ -36,13 +29,13 @@ export default function login(){
 
     return(
         <Container > 
-            <form className={styles.middle} >
+            <form className='middle' >
             <Typography gutterBottom variant='h3' >  Login </Typography>
-            <TextField type="email" label="Email Address" onChange={(e) => setEmail(e.target.value)} style={{width:400, marginTop:20,marginBottom:20,  }} required  />
+            <TextField type="email" label="Email Address" onChange={(e) => setEmail(e.target.value)} style={{width:'50%', marginTop:10,marginBottom:10,  }} required  />
             <br />
-            <TextField  type="password" label="Password" onChange={(e) => setPassword(e.target.value)}  style={{width:400, marginTop:20,marginBottom:20,}}  required />
+            <TextField  type="password" label="Password" onChange={(e) => setPassword(e.target.value)}  style={{width:'50%', marginTop:10,marginBottom:10,}}  required />
             <br />
-            <Button variant='contained' onClick={submit} style={{ backgroundColor:'#606eff' ,width:400, padding:20 ,marginTop:20,marginBottom:20}}> log in  </Button>
+            <Button variant='contained' onClick={submit} style={{ backgroundColor:'#606eff' ,width:'50%', padding:20 ,marginTop:10,marginBottom:10}}> log in  </Button>
             <br />
             <Button > {"Can't Log In?"} </Button>
             </form>

@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from './logo.svg';
 import './App.css';
-import Home from './screens/home'
+import {Home} from './screens/home'
 import Navbar from './navigation/navbar'
 import Login from './screens/login'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
@@ -12,10 +12,14 @@ import Listenlinks from './screens/listenlinks'
 import Logout from './screens/logout'
 import Sponsors from './screens/sponsors'
 import Add from './screens/add' 
+import { DataContext } from './Helper/Context';
 
 function App() {
 
+  const [maindatas, setMainDatas] = useState('')
+
   return (
+    <DataContext.Provider  value={{maindatas, setMainDatas}} >
     <div className="App" >
       <div>
         <Router>
@@ -47,6 +51,8 @@ function App() {
         </Router>
       </div>
     </div>
+    </DataContext.Provider>
+
   );
 }
 

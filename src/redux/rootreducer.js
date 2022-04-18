@@ -20,6 +20,6 @@ export default function rootreducer(state=initialstate,action){
             sponsordata:action.sponsordata
         }
     }
-    console.log('state',state)
+    //console.log('state',state)
     return state
 }

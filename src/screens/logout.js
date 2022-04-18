@@ -17,5 +17,4 @@ export default function logout(){
         <p> logged out...</p>
     )
 
-
 }

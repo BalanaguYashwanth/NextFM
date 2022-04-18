@@ -42,6 +42,7 @@ export default function listenlinks(){
 
     return(
         <div>
+            <Typography variant='h4' style={{ margin: 5 }} > Listen Links </Typography>
             <TextField fullWidth label="Apple Podcasts" className={styles.input} onChange={(e)=> setApple(e.target.value)}  />
             <TextField fullWidth label="Google Podcasts" className={styles.input} onChange={(e)=> setGoogle(e.target.value)} />
             <TextField fullWidth label="Spotify"  className={styles.input} onChange={(e)=> setSpotify(e.target.value)}  />

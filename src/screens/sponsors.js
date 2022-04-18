@@ -41,6 +41,7 @@ export default function Sponsors() {
     const [sponsor_banner, setSponsor_banner] = useState('')
     const [sponsor_url, setSponsor_url] = useState('')
 
+
     useEffect(() => {
         dispatch(updatedata)
     }, [])
@@ -50,7 +51,7 @@ export default function Sponsors() {
     }
 
     function handleClick(e, id) {
-        console.log(e, id)
+        //console.log(e, id)
         setIndex(id)
         setAnchorEL(e.currentTarget)
     }
@@ -78,7 +79,7 @@ export default function Sponsors() {
     }
 
     function deleting(object, id) {
-        console.log(object, id)
+        //console.log(object, id)
         axios.delete('https://nextfmapi.herokuapp.com/api/delete/' + object + '/' + id)
             .then(res => {
                 dispatch(updatedata)
@@ -96,7 +97,7 @@ export default function Sponsors() {
             Sponsor_url: sponsor_url
         })
             .then(res => {
-                console.log(res)
+                //console.log(res)
                 dialogClose()
                 dispatch(updatedata)
             })
@@ -137,7 +138,7 @@ export default function Sponsors() {
             <Button variant="contained" onClick={add} style={{ float: 'right' }}> add </Button>
             <div className='row'>
                 {
-                    details && details.map((data, id) => (
+                    details.length>0 ? details.map((data, id) => (
                         <div key={data.Sponsor_number} className='col-md-3'>
                             <Card style={{ margin: 10, maxWidth: 375, backgroundColor: 'rgb(250, 250, 250)' }} >
                                 <CardHeader
@@ -170,7 +171,8 @@ export default function Sponsors() {
                                 />
 
                                 <CardMedia
-                                    className={styles.image}
+                                    height='140'
+                                    component={'img'}
                                     image={data.Sponsor_banner}
                                 />
                                 <CardContent>
@@ -180,7 +182,9 @@ export default function Sponsors() {
 
 
                         </div>
-                    ))
+                    )) : <div className='middle'>
+                            <h1> No Data Found</h1>
+                        </div>
                 }
             </div>
 
@@ -191,11 +195,12 @@ export default function Sponsors() {
                         <DialogContentText> To Edit to this episode, please enter your details. It will be updated. </DialogContentText>
                         <TextField label='Sponsor Title' value={sponsor_title}  onChange={(e) => { setSponsor_title(e.target.value) }} fullWidth className={styles.input} />
                         <TextField label='Sponsor Protofolio Url' value={sponsor_url} onChange={(e) => { setSponsor_url(e.target.value) }} fullWidth className={styles.input} />
-                        <label className={styles.input}>
+                        {/* <label className={styles.input}>
                             <TextField style={{ display: 'none' }}  type='file' label='Sponsor Banner' onChange={(e) => { image(e) }} fullWidth className={styles.input} />
                             <Button variant="contained" component='span' > Upload Image </Button>
                             <p>  {progress} </p>
-                        </label>
+                        </label> */}
+                        <TextField label='Sponsor Banner Link' value={sponsor_banner} onChange={(e) => setSponsor_banner(e.target.value)} fullWidth className={styles.input}/>
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={dialogClose} > cancel </Button>

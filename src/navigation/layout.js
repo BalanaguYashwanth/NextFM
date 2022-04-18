@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Drawer, makeStyles, Typography, List, ListItem, ListItemText, ListItemIcon, AppBar, Toolbar, Box,LinearProgress } from '@material-ui/core'
+import { Container, Drawer, TextField ,makeStyles, Typography, List, ListItem, ListItemText, ListItemIcon, AppBar, Toolbar, Box,LinearProgress } from '@material-ui/core'
 import { AddCircleOutline, SubjectOutlined } from '@material-ui/icons'
 import { useHistory } from 'react-router-dom'
 import {Queue, Headset, Link, ExitToApp, Apartment, } from '@material-ui/icons'
@@ -45,7 +45,6 @@ const useStyles = makeStyles((theme) => ({
 export default function layout({ children }) {
     const styles = useStyles()
     const history = useHistory()
-
     const items = [
         {
             name: 'Home',
@@ -60,7 +59,7 @@ export default function layout({ children }) {
         {
             name:'Sponsors',
             icon:<Apartment />,
-            path:'sponsors'
+            path:'/sponsors'
         },
         {
             name:'Listen links',
@@ -86,18 +85,16 @@ export default function layout({ children }) {
                 classes={{ paper: styles.drawerpaper }}
             >
                 <Toolbar />
-               
                 <List>
                     {
                         items.map((item) => (
-                            <ListItem button align="center" onClick={() => (history.push(item.path))} key={item.name} >
-                                <ListItemIcon  > {item.icon}  </ListItemIcon>
+                            <ListItem button align="center" selected={item.path === history.location.pathname} onClick={() => (history.push(item.path))} key={item.name}  >
+                                <ListItemIcon > {item.icon}  </ListItemIcon>
                                 <ListItemText primary={item.name} />
                             </ListItem>
                         ))
                     }
                 </List>
-
             </Drawer>
 
             
@@ -106,11 +103,10 @@ export default function layout({ children }) {
                 <Headset fontSize='default' style={{marginLeft:10}} />
                     <Typography variant="h6" style={{margin:5}}  noWrap>
                         <Box fontStyle="italic" letterSpacing='2'>
-                            Exploiting with Teja Kummarikuntla  
+                         Exploiting with Teja Kummarikuntla  
                         </Box>
                      </Typography>
                 </Toolbar>
-                
             </AppBar>
             
             

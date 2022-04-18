@@ -5,7 +5,8 @@ function updatedata()
     return async function(disptach){
         await axios.get('https://nextfmapi.herokuapp.com/api/get/sponsor/')
         .then(res=>{
-            console.log('sponsorresult',res.data)
+            res.data.sort((a,b)=> parseInt(a.Sponsor_number) - parseInt(b.Sponsor_number))
+            //console.log('sponsorresult',res.data)
             disptach({type:'SPONSOR_UPDATE_DATA',sponsordata:res.data})
         })
         .catch(err=>{
@@ -15,7 +16,8 @@ function updatedata()
 
         await axios.get('https://nextfmapi.herokuapp.com/api/get/episode/')
         .then(async res=>{
-            console.log('episoderesult',res.data)
+            res.data.sort((a,b)=> parseInt(a.Episode) - parseInt(b.Episode))
+            //console.log('episoderesult',res.data)
             await disptach({type:'UPDATE_DATA',data:res.data})
         })
         .catch(async err=>{

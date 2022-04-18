@@ -7,6 +7,13 @@
   color: #333;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
 .navbar {
   padding: 20px;
   display: flex;
@@ -35,12 +42,26 @@
   padding: 20px;
 }
 
+.wrapper-class {
+  border: 1px solid #ccc;
+}
+.editor-class {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+}
+.toolbar-class {
+  border: 1px solid #ccc;
+}
+
 .middle{
+    display: flex;
     justify-content: center;
     text-align: center;
     align-items: center;
     margin: auto;
-    padding-top: 25%;  
+    flex-direction: column;
+    height: 100vh;
+    /* padding-top: 25%;   */
 }
 
 .field{
